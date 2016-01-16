@@ -1,13 +1,15 @@
+#!/usr/bin/env php
 <?php
+    if (!$argv[1]) || !$argv[2]))
+        exit();
+    
     $start = microtime(true);
-    include_once 'vendor/autoload.php';
-    echo "1";
-    $client = new \PEAR2\Net\RouterOS\Client('192.168.15.1', 'admin', '1');
-    echo "2";
-    $addRequest = new \PEAR2\Net\RouterOS\Request('/ip hotspot user add profile=ProfilInexistent');
+    include_once __DIR__ . '/../vendor/autoload.php';
+    $client = new \PEAR2\Net\RouterOS\Client('192.168.15.120', 'admin', 'pcnet1010');
+    $addRequest = new \PEAR2\Net\RouterOS\Request('/ip hotspot user add profile=uprof1 server=server1');
     $addRequest
-        ->setArgument('name', "aaa")
-        ->setArgument('password', "123456");//$argv[1])
+        ->setArgument('name', $argv[1]))
+        ->setArgument('password', $argv[2]));
 
     $errors = $client->sendSync($addRequest)->getAllOfType(\PEAR2\Net\RouterOS\Response::TYPE_ERROR);
     if (count($errors)) {
