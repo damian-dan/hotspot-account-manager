@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-import printer, random, textwrap, string, os
-from time import sleep
+import printer, random, textwrap, string, os, time
 import RPi.GPIO as GPIO
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
@@ -12,8 +11,9 @@ def doPrinting():
     username = id_generator()
     p.print_text(username)
     p.print_text("\npassword: ")
-    p.print_text(id_generator())
-    os.system('/home/pi/hotspot-account-manager/bin/createUser.php {0} {1}'.format(username) format(password))
+    password = id_generator()
+    p.print_text(password)
+    os.system('/home/pi/hotspot-account-manager/bin/createUser.php '+format(username)+' '+format(password))
 
     #wrapped_text = textwrap.fill("Lorem")
     #p.print_text(wrapped_text)
@@ -30,7 +30,7 @@ while True:
 	if GPIO.input(27) == False:
 		print("Printing")
 		doPrinting()
-		#os.system("/home/pi/try/py-thermal-printer/run.py")
-		sleep(1)
+		time.sleep(1)
+	time.sleep(0.000002)
 print ("end box execution2")
 GPIO.cleanup()
