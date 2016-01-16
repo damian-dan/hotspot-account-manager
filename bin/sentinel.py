@@ -13,7 +13,7 @@ def doPrinting():
     p.print_text(username)
     p.print_text("\npassword: ")
     p.print_text(id_generator())
-    os.system('/home/pi/try/mikrotik/sample.php {0}'.format(username))
+    os.system('/home/pi/hotspot-account-manager/bin/createUser.php {0} {1}'.format(username) format(password))
 
     #wrapped_text = textwrap.fill("Lorem")
     #p.print_text(wrapped_text)
