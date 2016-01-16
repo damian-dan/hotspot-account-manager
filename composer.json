@@ -1,0 +1,17 @@
+{
+    "name": "none/mikrotik",
+    "description": "Lorem ipsum",
+    "license": "osl",
+    "authors": [
+        {
+            "name": "some Author",
+            "email": "john@example.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "pear2/net_routeros": ">=1.0.0b4",
+        "pear2/cache_shm": ">=0.1.2"
+
+    }
+}
